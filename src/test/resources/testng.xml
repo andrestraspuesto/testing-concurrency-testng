@@ -1,0 +1,7 @@
+<suite name="Test suite concurrent execution" parallel="false" verbose="1" thread-count="2" >
+<test name="Test concurrent execution" >
+    <classes>
+    <class name="misiniciosenjava.*" />
+    </classes>
+</test>
+</suite>
