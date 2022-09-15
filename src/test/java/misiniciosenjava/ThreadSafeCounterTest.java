@@ -7,9 +7,10 @@ public class ThreadSafeCounterTest {
 
     private final ThreadSafeCounter concurrentCounter = new ThreadSafeCounter();
 
-    @Test(threadPoolSize = 10, invocationCount = 100)
-    public void shouldIncreaseCounter()
-    {
+    @Test(threadPoolSize = 4, invocationCount = 2000)
+    public void shouldIncreaseCounter() {
+        Thread.yield();
+
         CounterHandler handler = new CounterHandler(concurrentCounter);
         Integer result = handler.call();
         Assert.assertTrue(result > 0);
@@ -17,6 +18,6 @@ public class ThreadSafeCounterTest {
 
     @Test(dependsOnMethods = {"shouldIncreaseCounter"})
     public void shouldBe100() {
-        Assert.assertEquals(concurrentCounter.peekCounter(), 100);
+        Assert.assertEquals(concurrentCounter.peekCounter(), 2000);
     }
 }
