@@ -17,7 +17,7 @@ public class ThreadSafeCounterTest {
     }
 
     @Test(dependsOnMethods = {"shouldIncreaseCounter"})
-    public void shouldBe100() {
+    public void shouldBe2000() {
         Assert.assertEquals(concurrentCounter.peekCounter(), 2000);
     }
 }
